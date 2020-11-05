@@ -23,10 +23,17 @@ namespace Streamer.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Project>> Get()
+        public IActionResult Get()
         {
-
-            return _context.Projects.ToList();
+            try
+            {
+                var results = _context.Projects.ToList();
+                return Ok(results);            
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
         }
 
 

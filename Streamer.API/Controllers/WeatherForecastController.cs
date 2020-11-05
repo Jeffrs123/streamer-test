@@ -11,8 +11,8 @@ using Streamer.API.Model;
 namespace Streamer.API.Controllers
 {
     [ApiController]
-    //[Route("projetos")] //
-    [Route("[controller]")]
+    [Route("teste")] //
+    //[Route("[controller]")]
 
     public class WeatherForecastController : ControllerBase
     {
@@ -25,62 +25,24 @@ namespace Streamer.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Project>> Get()
+        public IActionResult Get()
         {
-            return new Project[] {
-                new Project() {
-                    Id = 1,
-                    Name = "Angular e .Net Core",
-                    Image = "link da imagem",
-                    Why = "Porque eu quero",
-                    What = "retornar um array",
-                    WhatWillWeDo = "retornar projeto",
-                    ProjectStatus = "status",
-                    Course = "curso",
-                    CourseId = 1233
-                },
-                new Project() {
-                    Id = 2,
-                    Name = "Angular e Só",
-                    Image = "link da imagem",
-                    Why = "Porque eu quero",
-                    What = "retornar um array",
-                    WhatWillWeDo = "retornar projeto",
-                    ProjectStatus = "status",
-                    Course = "curso",
-                    CourseId = 6521
-                }
-            };
+            try
+            {
+                var results = _context.Projects.ToList();
+                return Ok(results);            
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
         }
 
 
         [HttpGet("{id}")]
         public ActionResult<Project> Get(int id)
         {
-            return new Project[] {
-                new Project() {
-                    Id = 1,
-                    Name = "Angular e .Net Core",
-                    Image = "link da imagem",
-                    Why = "Porque eu quero",
-                    What = "retornar um array",
-                    WhatWillWeDo = "retornar projeto",
-                    ProjectStatus = "status",
-                    Course = "curso",
-                    CourseId = 1233
-                },
-                new Project() {
-                    Id = 2,
-                    Name = "Angular e Só",
-                    Image = "link da imagem",
-                    Why = "Porque eu quero",
-                    What = "retornar um array",
-                    WhatWillWeDo = "retornar projeto",
-                    ProjectStatus = "status",
-                    Course = "curso",
-                    CourseId = 6521
-                }
-            }.FirstOrDefault(x => x.Id == id);
+            return _context.Projects.FirstOrDefault(x => x.Id == id);
         }
 
         /*

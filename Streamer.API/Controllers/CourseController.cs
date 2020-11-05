@@ -27,7 +27,15 @@ namespace Streamer.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Course>> Get()
         {
-            return _context.Courses.ToList();
+            try
+            {
+                var results = _context.Courses.ToList();
+                return Ok(results);            
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
         }
 
 
