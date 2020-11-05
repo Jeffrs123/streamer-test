@@ -31,7 +31,7 @@ namespace Streamer.API.Controllers
                     CourseId = 1233
                 },
                 new Project() {
-                    Id = 1,
+                    Id = 2,
                     Name = "Angular e Só",
                     Image = "link da imagem",
                     Why = "Porque eu quero",
@@ -42,6 +42,36 @@ namespace Streamer.API.Controllers
                     CourseId = 6521
                 }
             };
+        }
+
+
+        [HttpGet("{id}")]
+        public ActionResult<Project> Get(int id)
+        {
+            return new Project[] {
+                new Project() {
+                    Id = 1,
+                    Name = "Angular e .Net Core",
+                    Image = "link da imagem",
+                    Why = "Porque eu quero",
+                    What = "retornar um array",
+                    WhatWillWeDo = "retornar projeto",
+                    ProjectStatus = "status",
+                    Course = "curso",
+                    CourseId = 1233
+                },
+                new Project() {
+                    Id = 2,
+                    Name = "Angular e Só",
+                    Image = "link da imagem",
+                    Why = "Porque eu quero",
+                    What = "retornar um array",
+                    WhatWillWeDo = "retornar projeto",
+                    ProjectStatus = "status",
+                    Course = "curso",
+                    CourseId = 6521
+                }
+            }.FirstOrDefault(x => x.Id == id);
         }
 
         /*
