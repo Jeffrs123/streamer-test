@@ -13,11 +13,19 @@
 
 ## CHECK LIST - API
 
+### COURSE API
+
 | Controler | Status  | Método  | Path  | Observação  |
 | :---:   | :-: | :-: | :-: | :-: |
 | Course | OK | GetAll | URL/cursos  | Retorna lista com objetos do tipo 'Course'. |
 | Course | OK | GetById | URL/cursos/{CourseId}  | Recebe um ID de um 'Course'.Retorna um objeto do tipo 'Course'. |
 | Course | :-: | GetByCourse | URL/cursos/{CourseId}/projects  | Recebe um ID de um 'Course'. Retorna uma lista genérica de 'Project'.  |
+
+
+### PROJECT API
+
+| Controler | Status  | Método  | Path  | Observação  |
+| :---:   | :-: | :-: | :-: | :-: |
 | Project | OK | GetAll | URL/projetos/  | Retorna lista com objetos do tipo 'Project'. |
 | Project | OK | GetById | URL/projetos/{ProjectId}  | Recebe um ID de um 'Project'.Retorna um objeto do tipo 'Project'. |
 | Project | :-: | Update | URL/projetos/{ProjectId}  | Recebe um objeto do tipo 'Project' e realiza a atualização do mesmo. Retorna um valor booleano.  |
