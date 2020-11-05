@@ -13,16 +13,16 @@
 
 ## CHECK LIST - API
 
-| Controler | Status  | Método  | Observação  |
-| :---:   | :-: | :-: | :-: |
-| Course | OK | GetAll | Retorna lista com objetos do tipo 'Course'. |
-| Course | :-: | GetByCourse | Recebe um ID de um 'Course'. Retorna uma lista genérica de 'Project'.  |
-| Course | OK | GetById | Recebe um ID de um 'Course'.Retorna um objeto do tipo 'Course'. |
-| Project | OK | GetAll | Retorna lista com objetos do tipo 'Project'. |
-| Project | OK | GetById | Recebe um ID de um 'Project'.Retorna um objeto do tipo 'Project'. |
-| Project | :-: | Update | Recebe um objeto do tipo 'Project' e realiza a atualização do mesmo. Retorna um valor booleano.  |
-| Project | :-: | Delete | Recebe um ID de um 'Project' e realizar a remoção do mesmo. Retorna um valor booleano.  |
-| Project | :-: | Create | Recebe um objeto do tipo Project e realiza a inserção no banco de dados. Retorna o Id do 'Project' inserido.  |
+| Controler | Status  | Método  | Path  | Observação  |
+| :---:   | :-: | :-: | :-: | :-: |
+| Course | OK | GetAll | http://localhost:5000/cursos  | Retorna lista com objetos do tipo 'Course'. |
+| Course | OK | GetById | http://localhost:5000/cursos/{CourseId}  | Recebe um ID de um 'Course'.Retorna um objeto do tipo 'Course'. |
+| Course | :-: | GetByCourse | http://localhost:5000/cursos/{CourseId}/projects  | Recebe um ID de um 'Course'. Retorna uma lista genérica de 'Project'.  |
+| Project | OK | GetAll | http://localhost:5000/projetos/  | Retorna lista com objetos do tipo 'Project'. |
+| Project | OK | GetById | http://localhost:5000/projetos/{ProjectId}  | Recebe um ID de um 'Project'.Retorna um objeto do tipo 'Project'. |
+| Project | :-: | Update | http://localhost:5000/projetos/{ProjectId}  | Recebe um objeto do tipo 'Project' e realiza a atualização do mesmo. Retorna um valor booleano.  |
+| Project | :-: | Delete | http://localhost:5000/projetos/{ProjectId}  | Recebe um ID de um 'Project' e realizar a remoção do mesmo. Retorna um valor booleano.  |
+| Project | :-: | Create | http://localhost:5000/projetos  | Recebe um objeto do tipo Project e realiza a inserção no banco de dados. Retorna o Id do 'Project' inserido.  |
 
 ## Inicio do Teste
 
