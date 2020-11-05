@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Streamer.API.Data;
 using Streamer.API.Model;
@@ -25,12 +26,13 @@ namespace Streamer.API.Controllers
 
         
         [HttpGet]
-        public ActionResult<IEnumerable<Course>> Get()
+        //public ActionResult<IEnumerable<Course>> Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                var results = _context.Courses.ToList();
-                return Ok(results);            
+                var results = await _context.Courses.ToListAsync();
+                return Ok(results);
             }
             catch (System.Exception)
             {
@@ -40,9 +42,17 @@ namespace Streamer.API.Controllers
 
 
         [HttpGet("{id}")]
-        public ActionResult<Course> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return _context.Courses.FirstOrDefault(x => x.Id == id);
+            try
+            {
+                var results = await _context.Courses.FirstOrDefaultAsync(x => x.Id == id);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
         }
     }
 }
