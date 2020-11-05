@@ -1,3 +1,5 @@
+# FILES REQUIRED BY STREAMER TEST
+
 | Atividade | Status  | Observação  |
 | :---:   | :-: | :-: |
 | Controler - Course | OK |  |
@@ -9,10 +11,14 @@
 | ./Services - Course | --- | CRUD |
 |---|---|---|
 
+## CHECK LIST - API
+
 | Controler | Status  | Método  | Observação  |
 | :---:   | :-: | :-: | :-: |
+| Course | OK | GetAll | Retorna lista com objetos do tipo 'Course'. |
 | Course | :-: | GetByCourse | Recebe um ID de um 'Course'. Retorna uma lista genérica de 'Project'.  |
-| Project | OK | GetaLL | Retorna lista com objetos do tipo 'Project'. |
+| Course | OK | GetById | Recebe um ID de um 'Course'.Retorna um objeto do tipo 'Course'. |
+| Project | OK | GetAll | Retorna lista com objetos do tipo 'Project'. |
 | Project | OK | GetById | Recebe um ID de um 'Project'.Retorna um objeto do tipo 'Project'. |
 | Project | :-: | Update | Recebe um objeto do tipo 'Project' e realiza a atualização do mesmo. Retorna um valor booleano.  |
 | Project | :-: | Delete | Recebe um ID de um 'Project' e realizar a remoção do mesmo. Retorna um valor booleano.  |
