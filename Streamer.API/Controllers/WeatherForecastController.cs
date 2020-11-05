@@ -55,4 +55,73 @@ namespace Streamer.API.Controllers
         }
     
     }
+
+    /*
+    public class WeatherForecastController : ControllerBase
+    {
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
+        private readonly ILogger<WeatherForecastController> _logger;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+    }
+    */
+
+    /* PROJETO STREAMER
+
+
+        // COURSE
+
+        // http://localhost:5000/cursos/{CourseId}/projects
+        GetByCourse
+        [HttpGet]
+        Recebe um ID de um 'Course'.
+        Retorna uma lista genérica de 'Project'.
+
+
+        // PROJECT
+
+        // http://localhost:5000/projetos/{ProjectId}
+        GetById
+        [HttpGet("{ProjectId}")]
+        Recebe um ID de um 'Project'.
+        Retorna um objeto do tipo 'Project'.
+
+        // http://localhost:5000/projetos/{ProjectId}
+        Update
+        [HttpPut("{ProjectId}")]
+        Recebe um objeto do tipo 'Project' e realiza a atualização do mesmo.
+        Retorna um valor booleano.
+
+        // http://localhost:5000/projetos/{ProjectId}
+        Delete
+        [HttpDelete("{ProjectId}")]
+        Recebe um ID de um 'Project' e realizar a remoção do mesmo.
+        Retorna um valor booleano.
+
+        // http://localhost:5000/projetos
+        Create
+        [HttpPost]
+        Recebe um objeto do tipo Project e realiza a inserção no banco de dados. Retorna o Id do 'Project' inserido.
+
+    */
 }

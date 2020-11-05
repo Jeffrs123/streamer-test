@@ -1,3 +1,23 @@
+| Atividade | Status  | Observação  |
+| :---:   | :-: | :-: |
+| Controler - Course | OK |  |
+| Controler - Project | OK |  |
+| ./Data | OK | Contexto do banco de dados |
+| ./Model - Project | OK | Modelo da Entidade Project |
+| ./Model - Course | OK | Modelo da Entidade Course |
+| ./Services - Project | --- | CRUD |
+| ./Services - Course | --- | CRUD |
+|---|---|---|
+
+| Controler | Status  | Método  | Observação  |
+| :---:   | :-: | :-: | :-: |
+| Course | :-: | GetByCourse | Recebe um ID de um 'Course'. Retorna uma lista genérica de 'Project'.  |
+| Project | OK | GetaLL | Retorna lista com objetos do tipo 'Project'. |
+| Project | OK | GetById | Recebe um ID de um 'Project'.Retorna um objeto do tipo 'Project'. |
+| Project | :-: | Update | Recebe um objeto do tipo 'Project' e realiza a atualização do mesmo. Retorna um valor booleano.  |
+| Project | :-: | Delete | Recebe um ID de um 'Project' e realizar a remoção do mesmo. Retorna um valor booleano.  |
+| Project | :-: | Create | Recebe um objeto do tipo Project e realiza a inserção no banco de dados. Retorna o Id do 'Project' inserido.  |
+
 ## Inicio do Teste
 
 Com .Net Core criar template webapi

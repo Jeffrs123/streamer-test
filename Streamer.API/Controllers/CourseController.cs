@@ -24,7 +24,7 @@ namespace Streamer.API.Controllers
             _context = context;
         }
 
-        
+        // LISTA DE COURSES
         [HttpGet]
         //public ActionResult<IEnumerable<Course>> Get()
         public async Task<IActionResult> Get()
@@ -41,6 +41,8 @@ namespace Streamer.API.Controllers
         }
 
 
+
+        // Course BY
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
