@@ -21,8 +21,7 @@ namespace Streamer.API.Model
         public string ProjectStatus { get; set; }
 
         public string Course { get; set; }
-        //public Curso Curso { get; set; }
-
+        public Course CursO { get; set; }
         public int CourseId { get; set; }
     }
 }
