@@ -2,13 +2,92 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Streamer.API.Model;
 
 namespace Streamer.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
+    public class WeatherForecastController : ControllerBase
+    {
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Project>> Get()
+        {
+            return new Project[] {
+                new Project() {
+                    Id = 1,
+                    Name = "Angular e .Net Core",
+                    Image = "link da imagem",
+                    Why = "Porque eu quero",
+                    What = "retornar um array",
+                    WhatWillWeDo = "retornar projeto",
+                    ProjectStatus = "status",
+                    Course = "curso",
+                    CourseId = 1233
+                },
+                new Project() {
+                    Id = 1,
+                    Name = "Angular e Só",
+                    Image = "link da imagem",
+                    Why = "Porque eu quero",
+                    What = "retornar um array",
+                    WhatWillWeDo = "retornar projeto",
+                    ProjectStatus = "status",
+                    Course = "curso",
+                    CourseId = 6521
+                }
+            };
+        }
+
+        /*
+        public readonly DataContext _context;
+
+        public WeatherForecastController(DataContext context)
+        {
+            _context = context;
+        }
+
+        
+        // GET eventos
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var results = await _context.Eventos.ToListAsync();
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
+        }
+
+        // GET eventos/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                var results = await _context.Eventos.FirstOrDefaultAsync( x => x.EventoId == id);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
+        }
+
+        */
+    
+    }
+
+    /*
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -36,4 +115,5 @@ namespace Streamer.API.Controllers
             .ToArray();
         }
     }
+    */
 }
