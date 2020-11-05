@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Streamer.API.Data;
 using Streamer.API.Model;
 
 namespace Streamer.API.Controllers
@@ -15,6 +16,13 @@ namespace Streamer.API.Controllers
 
     public class WeatherForecastController : ControllerBase
     {
+
+        public readonly StreamerContext _context;
+
+        public WeatherForecastController(StreamerContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<Project>> Get()
