@@ -11,7 +11,7 @@
 | ./Services - Course | --- | CRUD |
 |---|---|---|
 
-# CHECK LIST - API
+# CHECK LIST API's
 
 ### COURSE API
 
