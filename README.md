@@ -71,11 +71,13 @@ Quais foram os comandos que precisou rodar para que o banco de dados fosse atual
 
 ## FRONT END
 
-### CLI Angular
+### Instalar CLI Angular
 
     npm install -g @angular/cli
 
+### Iniciar Projeto
 
+    ng new nomeDoProjeto
 
 # Techs utilizadas no Projeto
 
