@@ -34,11 +34,13 @@
 
 # Inicio do Teste
 
+## BACK END
+
 Com .Net Core criar template webapi
 
     dotnet new webapi -n Streamer.API
 
-## Migrations
+### Migrations
 
     dotnet ef migrations add init
 
@@ -61,9 +63,35 @@ Quais foram os comandos que precisou rodar para que o banco de dados fosse atual
 ---
 
 
-## Database
+### Database
 
     dotnet ef database update
 
 
 
+## FRONT END
+
+### CLI Angular
+
+    npm install -g @angular/cli
+
+
+
+# Techs utilizadas no Projeto
+
+
+* [**`.Net Core`**](https://dotnet.microsoft.com/download) - Framework para desenvolver em C# o Back End.
+
+* **`C#`** - Linguagem utilizada no Back End.
+
+* [**`DB Browser for SQLite`**](https://sqlitebrowser.org/dl/) - Programa para manuseio de banco de dados SQL - Back End.
+
+* [**`Angular`**](https://angular.io/) - Framework para desenvolver Front End SPA.
+
+* [**`CLI Angular`**](https://cli.angular.io/) - Framework para desenvolver Front End SPA.
+
+* [**`Angular Doc`**]() - Documentação do Framework Angular.
+
+* **`JavaScript e TypeScript`** - Linguagem utilizada no Front End.
+
+* [**`Bootstrap`**]() - Estilos de Aparência Pré Definidos e Customizados para o Front End.
