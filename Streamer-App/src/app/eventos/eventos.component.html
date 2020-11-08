@@ -1,3 +1,86 @@
+<div class="title text-center">
+  <h1>PROJETOS</h1>
+
+  <form class="form-inline form justify-content-center">
+    <div class="form-grupo mg-2">
+      <input type="text" class="form-control mr-2" placeholder="buscar" />
+      <button class="btn btn-outline-success">buscar</button>
+    </div>
+  </form>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th># ID</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Project Status</th>
+      <th>What</th>
+      <th>What Wil we Do</th>
+      <th>Why</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="projetos && projetos.length">
+    <tr *ngFor="let projeto of projetos">
+      <th>{{ projeto.id }}</th>
+      <th>{{ projeto.name }}</th>
+      <th>{{ projeto.image }}</th>
+      <th>{{ projeto.projectStatus }}</th>
+      <th>{{ projeto.what }}</th>
+      <th>{{ projeto.whatWillWeDo }}</th>
+      <th>{{ projeto.why }}</th>
+      <th>
+        <button class="btn btn-success"></button>
+        <button class="btn btn-danger"></button>
+      </th>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!projetos.length">
+    <td colspan="8" class="text-center">
+      <h3>Nenhum Projeto Encontrado</h3>
+    </td>
+  </tfoot>
+</table>
+
+<div class="title text-center">
+  <h1>CURSOS</h1>
+
+  <form class="form-inline form justify-content-center">
+    <div class="form-grupo mg-2">
+      <input type="text" class="form-control mr-2" placeholder="buscar" />
+      <button class="btn btn-outline-success">buscar</button>
+    </div>
+  </form>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th># ID</th>
+      <th>Name</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="cursos && cursos.length">
+    <tr *ngFor="let curso of cursos">
+      <th>{{ curso.id }}</th>
+      <th>{{ curso.name }}</th>
+      <th>
+        <button class="btn btn-success"></button>
+        <button class="btn btn-danger"></button>
+      </th>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!cursos.length">
+    <td colspan="8" class="text-center">
+      <h3>Nenhum Curso Encontrado</h3>
+    </td>
+  </tfoot>
+</table>
+<!--
+
 <h1 *ngIf='projetos'>PROJETOS</h1>
 <h1 *ngIf='!projetos'>NÃO PROJETOS</h1>
 <div *ngFor="let projeto of projetos">
@@ -19,3 +102,5 @@
     <p>name: {{curso.name}} </p>
     <hr>
 </div>
+
+-->
