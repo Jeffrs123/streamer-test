@@ -1,7 +1,21 @@
-<h1>Component Eventos</h1>
-<div *ngFor="let evento of eventos">
-    <p>ID: {{evento.EventoId}} </p>
-    <p>Tema: {{evento.Tema}} </p>
-    <p>Local: {{evento.Local}} </p>
+<h1 *ngIf='projetos'>PROJETOS</h1>
+<h1 *ngIf='!projetos'>NÃO PROJETOS</h1>
+<div *ngFor="let projeto of projetos">
+    <p>ID: {{projeto.id}} </p>
+    <p>name: {{projeto.name}} </p>
+    <p>image: {{projeto.image}} </p>
+    <p>projectStatus: {{projeto.projectStatus}} </p>
+    <p>What: {{projeto.what}} </p>
+    <p>whatWillWeDo: {{projeto.whatWillWeDo}} </p>
+    <p>why: {{projeto.why}} </p>
+    <hr>
+</div>
+<hr>
+
+<h1 *ngIf='cursos'>CURSOS</h1>
+<h1 *ngIf='!cursos'>NÃO CURSOS</h1>
+<div *ngFor="let curso of cursos">
+    <p>ID: {{curso.id}} </p>
+    <p>name: {{curso.name}} </p>
     <hr>
 </div>
