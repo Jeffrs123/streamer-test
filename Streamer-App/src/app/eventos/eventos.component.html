@@ -1,12 +1,14 @@
 <div class="title text-center">
   <h1>PROJETOS</h1>
 
-  <form class="form-inline form justify-content-center">
+  <div class="form-inline form justify-content-center">
     <div class="form-grupo mg-2">
-      <input type="text" class="form-control mr-2" placeholder="buscar" />
+      <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filterProjetos" />
       <button class="btn btn-outline-success">buscar</button>
     </div>
-  </form>
+  </div>
+
+  <h1>Filtro: {{filterProjetos}}</h1>
 </div>
 
 <table class="table table-striped">
@@ -55,12 +57,14 @@
 <div class="title text-center">
   <h1>CURSOS</h1>
 
-  <form class="form-inline form justify-content-center">
+  <div class="form-inline form justify-content-center">
     <div class="form-grupo mg-2">
-      <input type="text" class="form-control mr-2" placeholder="buscar" />
+      <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filterCursos" />
       <button class="btn btn-outline-success">buscar</button>
     </div>
-  </form>
+  </div>
+
+  <h1>Filtro: {{filterCursos}}</h1>
 </div>
 
 <table class="table table-striped">

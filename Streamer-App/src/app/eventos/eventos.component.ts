@@ -33,6 +33,9 @@ export class EventosComponent implements OnInit {
   imagemMargem: number = 20;
   mostrarImagemProjeto: boolean = false;
   mostrarImagemCurso: boolean = false;
+  filterProjetos = '';
+  filterCursos = '';
+
 
   constructor(
     private http: HttpClient
