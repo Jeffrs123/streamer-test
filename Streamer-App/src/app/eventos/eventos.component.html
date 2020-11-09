@@ -2,20 +2,33 @@
   <h1>PROJETOS</h1>
 
   <div class="form-inline form justify-content-center">
-    <div class="form-grupo mg-2">
-      <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filterProjetos" />
-      <button class="btn btn-outline-success">buscar</button>
+    <div class="form-group mb-2">
+      <label class="mr-2">Filtrar: </label>
+      <input
+        type="text"
+        class="form-control mr-2"
+        placeholder="buscar"
+        [(ngModel)]="filterProjetos"
+      />
+      <!--
+        <button class="btn btn-outline-success">buscar</button>
+      -->
     </div>
   </div>
 
-  <h1>Filtro: {{filterProjetos}}</h1>
+  <h1>Filtro: {{ filterProjetos }}</h1>
 </div>
 
 <table class="table table-striped">
   <thead class="thead-light">
     <tr>
       <th>
-        <button class="btn btn-outline-primary" (click)="alternarImagemProjeto()"> Mostrar Imagem</button>
+        <button
+          class="btn btn-outline-primary"
+          (click)="alternarImagemProjeto()"
+        >
+          Mostrar Imagem
+        </button>
       </th>
       <th># ID</th>
       <th>Name</th>
@@ -27,9 +40,10 @@
     </tr>
   </thead>
   <tbody *ngIf="projetos && projetos.length">
-    <tr *ngFor="let projeto of projetos">
+    <tr *ngFor="let projeto of projetosFiltrados">
       <th>
-        <img *ngIf="mostrarImagemProjeto"
+        <img
+          *ngIf="mostrarImagemProjeto"
           src="http://localhost:5000/img/{{ projeto.image }}"
           alt="{{ projeto.name }}"
           class="image"
@@ -37,7 +51,7 @@
       </th>
       <th>{{ projeto.id }}</th>
       <th>{{ projeto.name }}</th>
-      <th>{{ projeto.projectStatus }}</th>
+      <th>{{ projeto.projectStatus | uppercase }}</th>
       <th>{{ projeto.what }}</th>
       <th>{{ projeto.whatWillWeDo }}</th>
       <th>{{ projeto.why }}</th>
@@ -54,24 +68,56 @@
   </tfoot>
 </table>
 
+<!--
+  
+  <div class="title text-center">
+    <h1>CURSOS</h1>
+  
+    <div class="form-inline form justify-content-center">
+      <div class="form-grupo mg-2">
+        <input
+          type="text"
+          class="form-control mr-2"
+          placeholder="buscar"
+          [(ngModel)]="filterCursos"
+        />
+        <button class="btn btn-outline-success">buscar</button>
+      </div>
+    </div>
+  
+    <h1>Filtro: {{ filterCursos }}</h1>
+  </div>
+
+-->
 <div class="title text-center">
   <h1>CURSOS</h1>
 
   <div class="form-inline form justify-content-center">
-    <div class="form-grupo mg-2">
-      <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filterCursos" />
-      <button class="btn btn-outline-success">buscar</button>
+    <div class="form-group mb-2">
+      <label class="mr-2">Filtrar: </label>
+      <input
+        type="text"
+        class="form-control mr-2"
+        placeholder="buscar"
+        [(ngModel)]="filterCursos"
+      />
+      <!--
+        <button class="btn btn-outline-success">buscar</button>
+      -->
     </div>
   </div>
 
-  <h1>Filtro: {{filterCursos}}</h1>
+  <h1>Filtro: {{ filterCursos }}</h1>
 </div>
+
 
 <table class="table table-striped">
   <thead class="thead-light">
     <tr>
       <th>
-        <button class="btn btn-outline-primary" (click)="alternarImagemCurso()" >Mostrar Imagem</button>
+        <button class="btn btn-outline-primary" (click)="alternarImagemCurso()">
+          Mostrar Imagem
+        </button>
       </th>
       <th># ID</th>
       <th>Name</th>
@@ -79,9 +125,10 @@
     </tr>
   </thead>
   <tbody *ngIf="cursos && cursos.length">
-    <tr *ngFor="let curso of cursos">
+    <tr *ngFor="let curso of cursosFiltrados">
       <th>
-        <img *ngIf="mostrarImagemCurso"
+        <img
+          *ngIf="mostrarImagemCurso"
           src="http://localhost:5000/img/{{ curso.image }}"
           alt="{{ curso.name }}"
           [style.width.px]="imagemLargura"
