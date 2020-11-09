@@ -28,6 +28,11 @@ export class EventosComponent implements OnInit {
 
   projetos: any = [];
   cursos: any = [];
+  imagemLargura: number = 50;
+  imagemAltura: number = 50;
+  imagemMargem: number = 20;
+  mostrarImagemProjeto: boolean = false;
+  mostrarImagemCurso: boolean = false;
 
   constructor(
     private http: HttpClient
@@ -39,22 +44,14 @@ export class EventosComponent implements OnInit {
     this.getProjetos();
   }
 
-  path: string;
-
-  initialize(path: string) {
-    this.http
-    .get(`http://localhost:5000/${path}`)
-    .subscribe(
-      response => {
-        console.log('response', response);
-        this.projetos = response;
-      },
-      error => {
-        console.log('error', error)
-      }
-    )
-  ;
+  alternarImagemProjeto() {
+    this.mostrarImagemProjeto = !this.mostrarImagemProjeto;
   }
+
+  alternarImagemCurso() {
+    this.mostrarImagemCurso = !this.mostrarImagemCurso;
+  }
+
   getProjetos() {
     this.projetos = this.http
       .get('http://localhost:5000/projetos')

@@ -8,7 +8,7 @@ using Streamer.API.Data;
 namespace Streamer.API.Migrations
 {
     [DbContext(typeof(StreamerContext))]
-    [Migration("20201105175617_init")]
+    [Migration("20201109150228_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,6 +22,9 @@ namespace Streamer.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");

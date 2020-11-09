@@ -10,11 +10,13 @@
 </div>
 
 <table class="table table-striped">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
+      <th>
+        <button class="btn btn-outline-primary" (click)="alternarImagemProjeto()"> Mostrar Imagem</button>
+      </th>
       <th># ID</th>
       <th>Name</th>
-      <th>Image</th>
       <th>Project Status</th>
       <th>What</th>
       <th>What Wil we Do</th>
@@ -24,9 +26,15 @@
   </thead>
   <tbody *ngIf="projetos && projetos.length">
     <tr *ngFor="let projeto of projetos">
+      <th>
+        <img *ngIf="mostrarImagemProjeto"
+          src="http://localhost:5000/img/{{ projeto.image }}"
+          alt="{{ projeto.name }}"
+          class="image"
+        />
+      </th>
       <th>{{ projeto.id }}</th>
       <th>{{ projeto.name }}</th>
-      <th>{{ projeto.image }}</th>
       <th>{{ projeto.projectStatus }}</th>
       <th>{{ projeto.what }}</th>
       <th>{{ projeto.whatWillWeDo }}</th>
@@ -56,8 +64,11 @@
 </div>
 
 <table class="table table-striped">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
+      <th>
+        <button class="btn btn-outline-primary" (click)="alternarImagemCurso()" >Mostrar Imagem</button>
+      </th>
       <th># ID</th>
       <th>Name</th>
       <th>Opções</th>
@@ -65,6 +76,14 @@
   </thead>
   <tbody *ngIf="cursos && cursos.length">
     <tr *ngFor="let curso of cursos">
+      <th>
+        <img *ngIf="mostrarImagemCurso"
+          src="http://localhost:5000/img/{{ curso.image }}"
+          alt="{{ curso.name }}"
+          [style.width.px]="imagemLargura"
+          [style.margin.px]="imagemMargem"
+        />
+      </th>
       <th>{{ curso.id }}</th>
       <th>{{ curso.name }}</th>
       <th>
