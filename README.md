@@ -68,6 +68,44 @@ Quais foram os comandos que precisou rodar para que o banco de dados fosse atual
     dotnet ef database update
 
 
+### Camadas (1 arquivo e 2 projetos)
+
+Separar responsabilidades que se encontram dentro do projeto "Streamer.API"
+Dividir a responsabilidades de acordo com o projeto.
+
+1. Arquivo de Solução -
+2. Camada de Domínio (Projeto) - Colocar entidades e relação de regra de negócio.
+3. Camada de Repositório (Projeto) - Separar a responsabilidade de persistir os dados.
+4. Camada de API (Projeto) - Onde colocamos os middleware.
+
+
+#### Projeto de Domínio
+
+Com terminal em:
+
+    C:\Users\Micro\Documents\streamer>
+    dotnet new classlib -n Streamer.Domain
+
+Remover arquivo "Class1.cs"
+
+    rm -R Streamer.Domain/Class1.cs
+
+#### Projeto de Repositório
+
+Com terminal em:
+
+    C:\Users\Micro\Documents\streamer>
+    dotnet new classlib -n Streamer.Repository
+    
+Remover arquivo "Class1.cs"
+
+    rm -R Streamer.Repository/Class1.cs
+
+#### Arquivo de solução
+
+    dotnet new sln -n Streamer
+
+
 
 ## FRONT END
 
