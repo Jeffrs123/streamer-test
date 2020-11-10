@@ -3,7 +3,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Streamer.Domain\Streamer.Domain.csproj" />
+    <ProjectReference Include="..\Streamer.Repository\Streamer.Repository.csproj" />
   </ItemGroup>
 </Project>

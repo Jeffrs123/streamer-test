@@ -90,7 +90,7 @@ Remover arquivo "Class1.cs"
 
     rm -R Streamer.Domain/Class1.cs
 
-#### Projeto de Repositório
+##### Projeto de Repositório
 
 Com terminal em:
 
@@ -101,10 +101,44 @@ Remover arquivo "Class1.cs"
 
     rm -R Streamer.Repository/Class1.cs
 
-#### Arquivo de solução
+##### Arquivo de solução
 
     dotnet new sln -n Streamer
 
+#### Referenciar `Projeto de Domínio` no `Projeto de Repositório`
+
+    dotnet add Streamer.Repository/Streamer.Repository.csproj reference Streamer.Domain/Streamer.Domain.csproj
+
+#### Referenciar `Projeto de Domínio` e `Projeto de Repositório` no `Projeto da API`
+
+    dotnet add Streamer.API/Streamer.API.csproj reference Streamer.Domain/Streamer.Domain.csproj
+
+    E
+
+    dotnet add Streamer.API/Streamer.API.csproj reference Streamer.Repository/Streamer.Repository.csproj
+
+
+#### Referenciar `Projeto de Domínio` e `Projeto de Repositório` e `Projeto da API` no `Arquivo de Solução`
+
+    dotnet sln Streamer.sln add Streamer.API/Streamer.API.csproj Streamer.Repository/Streamer.Repository.csproj Streamer.Domain/Streamer.Domain.csproj
+
+#### PROJETOS REFERENCIADOS
+
+Como os projetos estão referenciados na solução (Streamer.sln)
+- Streamer.API/Streamer.API.csproj 
+- Streamer.Repository/Streamer.Repository.csproj 
+- Streamer.Domain/Streamer.Domain.csproj
+
+Os arquivos/pastas internos **bin** e **obj** podem ser excluídos, que ao executar o build (comando abaixo). Vai encontrar tudo o que estiver referenciado na solução e então dará build nesses arquivos.
+
+Terminal em
+
+    C:\Users\Micro\Documents\streamer>  
+    dotnet build  
+
+Assim é garantido que qualquer pessoa que queira abri esse arquivo, conseguirá, executar sem problema algum.
+
+O diretório/projeto da interface/front end (Streamer-App), não está referenciado em nossa solução dotnet porque ele não é um projeto dotnet, ele é um projeto de interface.
 
 
 ## FRONT END
