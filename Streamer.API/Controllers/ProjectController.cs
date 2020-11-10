@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Streamer.API.Data;
+//using Streamer.API.Data;
 using Streamer.API.Model;
+using Streamer.Repository;
 
 namespace Streamer.API.Controllers
 {

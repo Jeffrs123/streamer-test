@@ -157,6 +157,26 @@ No projeto **`Streamer.Domain`** criamos classes tanto para continuação do cur
 - Project.cs
 
 
+### Streamer.Repository - Migrations - Data/Streamer Context
+
+No projeto **`Streamer.Repository`** criamos classe StreamerContext com referência para todas as entidades, tanto do curso como para do teste.
+E também crianção de método, para que na criação das Entidades de Referência (CourseProject e PalestranteEvento) as **"chaves estrangeiras"** sejam usadas.
+
+#### Gerar Migrations
+
+Terminal em: 
+    C:\Users\Micro\Documents\streamer\Streamer.Repository> 
+    dotnet ef migrations add init
+
+NÃO FUNCIONARÁ, Daí termos que usar:
+    C:\Users\Micro\Documents\streamer\Streamer.Repository> 
+    dotnet ef --startup-project ../Streamer.API migrations add init
+
+e também
+
+    C:\Users\Micro\Documents\streamer\Streamer.Repository> 
+    dotnet ef --startup-project ../Streamer.API database update
+
 
 ## FRONT END
 

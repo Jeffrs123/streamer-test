@@ -11,7 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Streamer.API.Data;
+//using Streamer.API.Data;
+using Streamer.Repository;
 
 namespace Streamer.API
 {

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Streamer.Domain
 {
     public class Course
