@@ -140,6 +140,23 @@ Assim é garantido que qualquer pessoa que queira abri esse arquivo, conseguirá
 
 O diretório/projeto da interface/front end (Streamer-App), não está referenciado em nossa solução dotnet porque ele não é um projeto dotnet, ele é um projeto de interface.
 
+### Classes e Relações
+
+No projeto **`Streamer.Domain`** criamos classes tanto para continuação do curso, como também para definir o projeto da Streamer. Seguem as relações abaixo.
+
+#### Para Curso Udemy
+- Evento.cs
+- Lote.cs
+- Palestrante.cs
+- PalestranteEvento.cs
+- RedeSocial
+
+#### Para Teste Streamer
+- Course.cs
+- CourseProject.cs
+- Project.cs
+
+
 
 ## FRONT END
 
