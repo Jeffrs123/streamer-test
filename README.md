@@ -177,6 +177,12 @@ e também
     C:\Users\Micro\Documents\streamer\Streamer.Repository> 
     dotnet ef --startup-project ../Streamer.API database update
 
+### Streamer.Repository - Interface
+
+Criação da interface (arquivo) "IStreamerRepository", para implementar a interface dos métodos de chamadas tanto para Evento quanto Palestrante.
+
+Atualizar para as chamadas de acordo com o Solicitado pelo teste.
+
 
 ## FRONT END
 
