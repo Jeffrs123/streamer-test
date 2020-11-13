@@ -1,4 +1,6 @@
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Streamer.Domain;
 
 namespace Streamer.Repository
@@ -20,7 +22,6 @@ namespace Streamer.Repository
         // GERAIS
         public void Add<T>(T entity) where T : class
         {
-            //throw new System.NotImplementedException();
             _context.Add(entity);
         }
         public void Update<T>(T entity) where T : class
@@ -29,26 +30,27 @@ namespace Streamer.Repository
         }
         public void Delete<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Remove(entity);
         }
-        public Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new System.NotImplementedException();
+            return (await _context.SaveChangesAsync()) > 0;
         }
+
 
 
 
 
         // COURSE
-        public Task<Course> GetCourseAsyncById(int CourseId, bool includeProjects)
-        {
-            throw new System.NotImplementedException();
-        }
         public Task<Course[]> GetAllCourseAsync(bool includeProjects)
         {
             throw new System.NotImplementedException();
         }
         public Task<Course[]> GetAllCourseAsyncByName(string name, bool includeProjects)
+        {
+            throw new System.NotImplementedException();
+        }
+        public Task<Course> GetCourseAsyncById(int CourseId, bool includeProjects)
         {
             throw new System.NotImplementedException();
         }
@@ -58,17 +60,74 @@ namespace Streamer.Repository
 
 
         // EVENTO
-        public Task<Evento> GetEventoAsyncById(int EventoId, bool includePalestrantes)
+        public async Task<Evento[]> GetAllEventoAsync(bool includePalestrantes = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Evento> query = _context.Eventos
+                .Include(c => c.Lotes)
+                .Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includePalestrantes)
+            {
+                query = query
+                    .Include(pe => pe.PalestrantesEventos)
+                    .ThenInclude(p => p.Palestrante)
+                ;
+            }
+
+            query = query.OrderByDescending(c => c.DateEvento);
+
+            return await query.ToArrayAsync();
         }
-        public Task<Evento[]> GetAllEventoAsync(bool includePalestrantes)
+        public async Task<Evento[]> GetAllEventoAsyncByTema(string tema, bool includePalestrantes)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Evento> query = _context.Eventos
+                .Include(c => c.Lotes)
+                .Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includePalestrantes)
+            {
+                query = query
+                    .Include(pe => pe.PalestrantesEventos)
+                    .ThenInclude(p => p.Palestrante)
+                ;
+            }
+
+            query = query
+                .OrderByDescending(c => c.DateEvento)
+                .Where(c => c.Tema.Contains(tema)) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.ToArrayAsync();
         }
-        public Task<Evento[]> GetAllEventoAsyncByTema(string tema, bool includePalestrantes)
+        public async Task<Evento> GetEventoAsyncById(int EventoId, bool includePalestrantes)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Evento> query = _context.Eventos
+                .Include(c => c.Lotes)
+                .Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includePalestrantes)
+            {
+                query = query
+                    .Include(pe => pe.PalestrantesEventos)
+                    .ThenInclude(p => p.Palestrante)
+                ;
+            }
+
+            query = query
+                .OrderByDescending(c => c.DateEvento)
+                .Where(c => c.Id == EventoId) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.FirstOrDefaultAsync();
         }
 
 
