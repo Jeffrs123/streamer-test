@@ -18,8 +18,8 @@ namespace Streamer.Repository
 
 
          // PALESTRANTE
-         Task<Palestrante []> GetAllPalestranteAsyncByName(bool includePalestrantes);
-         Task<Palestrante> GetPalestranteAsync(int PalestranteId, bool includePalestrantes);
+         Task<Palestrante> GetPalestranteAsync(int PalestranteId, bool includeEventos);
+         Task<Palestrante []> GetAllPalestranteAsyncByName(string name, bool includeEventos);
 
          // COURSES
          Task<Course []> GetAllCourseAsyncByName(string name, bool includeProjects);

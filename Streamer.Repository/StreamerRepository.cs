@@ -100,7 +100,7 @@ namespace Streamer.Repository
 
             query = query
                 .OrderByDescending(c => c.DateEvento)
-                .Where(c => c.Tema.Contains(tema)) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+                .Where(c => c.Tema.ToLower().Contains(tema.ToLower())) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
             ;
 
             return await query.ToArrayAsync();
@@ -135,14 +135,52 @@ namespace Streamer.Repository
 
 
         // PALESTRANTE
-        public Task<Palestrante[]> GetAllPalestranteAsyncByName(bool includePalestrantes)
+        public async Task<Palestrante> GetPalestranteAsync(int PalestranteId, bool includeEventos = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Palestrante> query = _context.Palestrantes
+                .Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeEventos)
+            {
+                query = query
+                    .Include(pe => pe.PalestrantesEventos)
+                    .ThenInclude(e => e.Evento)
+                ;
+            }
+
+            query = query
+                .OrderBy(p => p.Nome)
+                .Where(p => p.Id == PalestranteId) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.FirstOrDefaultAsync();
         }
-        public Task<Palestrante> GetPalestranteAsync(int PalestranteId, bool includePalestrantes)
+        public async Task<Palestrante[]> GetAllPalestranteAsyncByName(string name, bool includeEventos = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Palestrante> query = _context.Palestrantes
+                .Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeEventos)
+            {
+                query = query
+                    .Include(pe => pe.PalestrantesEventos)
+                    .ThenInclude(e => e.Evento)
+                ;
+            }
+
+            query = query
+                .Where(p => p.Nome.ToLower().Contains(name.ToLower())) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.ToArrayAsync();
         }
+
 
 
 
