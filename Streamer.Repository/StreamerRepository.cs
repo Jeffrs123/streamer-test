@@ -42,17 +42,71 @@ namespace Streamer.Repository
 
 
         // COURSE
-        public Task<Course[]> GetAllCourseAsync(bool includeProjects)
+        public async Task<Course[]> GetAllCourseAsync(bool includeProjects = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Course> query = _context.Courses;
+                //.Include(c => c..Lotes)
+                //.Include(c => c.RedesSociais)
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeProjects)
+            {
+                query = query
+                    .Include(cp => cp.CourseProjects)
+                    .ThenInclude(p => p.Project)
+                ;
+            }
+
+            query = query.OrderBy(c => c.Name);
+
+            return await query.ToArrayAsync();
         }
-        public Task<Course[]> GetAllCourseAsyncByName(string name, bool includeProjects)
+        public async Task<Course[]> GetAllCourseAsyncByName(string name, bool includeProjects = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Course> query = _context.Courses;
+                //.Include(c => c..Lotes)
+                //.Include(c => c.RedesSociais)
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeProjects)
+            {
+                query = query
+                    .Include(cp => cp.CourseProjects)
+                    .ThenInclude(p => p.Project)
+                ;
+            }
+
+            query = query
+                .OrderBy(c => c.Name)
+                .Where(c => c.Name.ToLower().Contains(name.ToLower())) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.ToArrayAsync();
         }
-        public Task<Course> GetCourseAsyncById(int CourseId, bool includeProjects)
+        public async Task<Course> GetCourseAsyncById(int CourseId, bool includeProjects = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Course> query = _context.Courses;
+                //.Include(c => c..Lotes)
+                //.Include(c => c.RedesSociais)
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeProjects)
+            {
+                query = query
+                    .Include(cp => cp.CourseProjects)
+                    .ThenInclude(p => p.Project)
+                ;
+            }
+
+            query = query
+                .OrderBy(c => c.Name)
+                .Where(c => c.Id == CourseId) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.FirstOrDefaultAsync();
         }
 
 
@@ -81,7 +135,7 @@ namespace Streamer.Repository
 
             return await query.ToArrayAsync();
         }
-        public async Task<Evento[]> GetAllEventoAsyncByTema(string tema, bool includePalestrantes)
+        public async Task<Evento[]> GetAllEventoAsyncByTema(string tema, bool includePalestrantes = false)
         {
             // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
             IQueryable<Evento> query = _context.Eventos
@@ -105,7 +159,7 @@ namespace Streamer.Repository
 
             return await query.ToArrayAsync();
         }
-        public async Task<Evento> GetEventoAsyncById(int EventoId, bool includePalestrantes)
+        public async Task<Evento> GetEventoAsyncById(int EventoId, bool includePalestrantes = false)
         {
             // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
             IQueryable<Evento> query = _context.Eventos
@@ -187,13 +241,50 @@ namespace Streamer.Repository
 
 
         // PROJECT
-        public Task<Project[]> GetAllProjectAsyncByName(bool includeProjects)
+        public async Task<Project> GetProjectAsync(int ProjectId, bool includeCourse = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Project> query = _context.Projects
+                //.Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeCourse)
+            {
+                query = query
+                    .Include(cp => cp.Course)
+                ;
+            }
+
+            query = query
+                .OrderBy(p => p.Name)
+                .Where(p => p.Id == ProjectId) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            //return await query.ToArrayAsync();
+            return await query.FirstOrDefaultAsync();
+
         }
-        public Task<Project> GetProjectAsync(int ProjectId, bool includeProjects)
+        public async Task<Project[]> GetAllProjectAsyncByName(string name, bool includeCourse = false)
         {
-            throw new System.NotImplementedException();
+            // Ir ao BD e já coletar os 'Lotes' e 'Redes Sociais'
+            IQueryable<Project> query = _context.Projects
+                //.Include(c => c.RedesSociais)
+            ;
+
+            // Se parâmetro ativado para também incluir 'Palestrantes', também inserí-los ao retornar os dados ao usuário.
+            if (includeCourse)
+            {
+                query = query
+                    .Include(cp => cp.Course)
+                ;
+            }
+
+            query = query
+                .Where(p => p.Name.ToLower().Contains(name.ToLower())) // Adicionado apenas para retornar array de objetos, filtrados pelo "tema".
+            ;
+
+            return await query.ToArrayAsync();
         }
     }
 }

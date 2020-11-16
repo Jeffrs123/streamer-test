@@ -28,7 +28,7 @@ namespace Streamer.Repository
 
 
          // PROJECTS
-         Task<Project []> GetAllProjectAsyncByName(bool includeProjects);
-         Task<Project> GetProjectAsync(int ProjectId, bool includeProjects);
+         Task<Project> GetProjectAsync(int ProjectId, bool includeCourse);
+         Task<Project []> GetAllProjectAsyncByName(string name, bool includeCourse);
     }
 }
